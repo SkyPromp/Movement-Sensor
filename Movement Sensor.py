@@ -10,10 +10,11 @@ while video.isOpened():
     if ret:
         cv.imshow("frame", frame)
         cv.imshow("prevframe", prevframe)
-        if cv.matchTemplate(prevframe, frame, cv.TM_CCOEFF_NORMED)[0][0] < 0.97:
+        if cv.matchTemplate(prevframe, frame, cv.TM_CCOEFF_NORMED)[0][0] < 0.99:
+            cv.waitKey(1000)
             print("movement")
             ws.Beep(440, 200)
-        if cv.waitKey(25) & 0xFF == ord('q'):
+        if cv.waitKey(1) & 0xFF == ord('q'):
             break
 
     else:
